@@ -1,9 +1,7 @@
 {
     "name": "NaughtyAttributes.Test",
     "references": [
-        "NaughtyAttributes.Core",
-        "UnityEditor.UI",
-        "UnityEngine.UI"
+        "NaughtyAttributes.Core"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

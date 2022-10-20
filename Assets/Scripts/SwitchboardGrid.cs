@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class SwitchboardGrid : MonoBehaviour
@@ -11,11 +12,20 @@ public class SwitchboardGrid : MonoBehaviour
 
     private SwitchboardPort[,] _portGrid;
 
-    void Start()
+    [Button()]
+    void GenerateGrid()
     {
         _camera = Camera.main;
 
+        if (_portGrid?.Length > 0)
+        {
+            foreach (var port in _portGrid)
+            {
+                DestroyImmediate(port.gameObject);
+            }
+        }
         _portGrid = new SwitchboardPort[HEIGHT, WIDTH];
+        
         for (int jj = 0; jj < HEIGHT; ++jj)
         {
             for (int ii = 0; ii < WIDTH; ++ii)

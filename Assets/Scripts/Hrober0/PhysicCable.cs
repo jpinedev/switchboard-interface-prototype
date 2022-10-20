@@ -17,6 +17,7 @@ public class PhysicCable : MonoBehaviour
 
     [Header("Behavior")]
     [SerializeField, Min(1f)] private float springForce = 200;
+    [SerializeField, Range(0f, 1f)] private float damper = .2f;
     [SerializeField, Min(1f)] private float brakeLengthMultiplier = 2f;
     [SerializeField, Min(0.1f)] private float minBrakeTime = 1f;
     private float brakeLength;
@@ -269,11 +270,11 @@ public class PhysicCable : MonoBehaviour
     {
         spring.connectedBody = connectedBody;
         spring.spring = springForce;
-        spring.damper = 0.2f;
+        spring.damper = damper;
         spring.autoConfigureConnectedAnchor = false;
         spring.anchor = Vector3.zero;
         spring.connectedAnchor = Vector3.zero;
-        spring.minDistance = space;
+        spring.minDistance = space * 0.75f;
         spring.maxDistance = space;
     }
     private GameObject CreateNewPoint(int index)
